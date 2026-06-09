@@ -31,6 +31,7 @@ function Article() {
     <div className="article-page">
       <BannerContainer>
         <h1>{title}</h1>
+        {article.viewCount != null && <span className="article-viewCount" style={{ marginRight: 12, color: "#888", fontSize: 14 }}>📊 {article.viewCount}</span>}
         <ArticleMeta author={author} createdAt={createdAt}>
           <ArticlesButtons article={article} setArticle={setArticle} />
         </ArticleMeta>
