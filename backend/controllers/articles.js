@@ -76,7 +76,7 @@ const createArticle = async (req, res, next) => {
     const { loggedUser } = req;
     if (!loggedUser) throw new UnauthorizedError();
 
-    const { title, description, body, tagList } = req.body.article;
+    const { title, description, body, tagList, viewCount } = req.body.article;
     if (!title) throw new FieldRequiredError("A title");
     if (!description) throw new FieldRequiredError("A description");
     if (!body) throw new FieldRequiredError("An article body");
@@ -90,6 +90,7 @@ const createArticle = async (req, res, next) => {
       title: title,
       description: description,
       body: body,
+      viewCount: viewCount,
     });
 
     for (const tag of tagList) {
@@ -188,7 +189,8 @@ const updateArticle = async (req, res, next) => {
       throw new ForbiddenError("article");
     }
 
-    const { title, description, body } = req.body.article;
+    const { title, description, body, viewCount } = req.body.article;
+    if (viewCount !== undefined) article.viewCount = viewCount;
     if (title) {
       article.slug = slugify(title);
       article.title = title;
