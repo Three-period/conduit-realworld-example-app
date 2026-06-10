@@ -31,6 +31,7 @@ function Article() {
     <div className="article-page">
       <BannerContainer>
         <h1>{title}</h1>
+        {article.designatedHeat != null && <span className="article-designatedHeat" style={{ marginRight: 12, color: "#888", fontSize: 14 }}>📊 {article.designatedHeat}</span>}
         <ArticleMeta author={author} createdAt={createdAt}>
           <ArticlesButtons article={article} setArticle={setArticle} />
         </ArticleMeta>
