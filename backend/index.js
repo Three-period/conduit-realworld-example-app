@@ -18,7 +18,9 @@ app.use(express.json());
 
 (async () => {
   try {
-    await sequelize.sync({ alter: true });
+    // 仅在表不存在时创建（含模型关联生成的外键/连接表）；不用 { alter:true }：
+    // SQLite 下 alter 会重建已有数据表并破坏关联（导致 hasFollower is not a function）
+    await sequelize.sync();
     console.log(`Connection with ${env} database has been established.`);
   } catch (error) {
     console.error("Unable to connect to the database:", error);
