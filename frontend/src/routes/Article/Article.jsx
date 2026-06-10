@@ -31,6 +31,7 @@ function Article() {
     <div className="article-page">
       <BannerContainer>
         <h1>{title}</h1>
+        {article.realTimeHotValue != null && <span className="article-realTimeHotValue" style={{ marginRight: 12, color: "#888", fontSize: 14 }}>📊 {article.realTimeHotValue}</span>}
         <ArticleMeta author={author} createdAt={createdAt}>
           <ArticlesButtons article={article} setArticle={setArticle} />
         </ArticleMeta>
