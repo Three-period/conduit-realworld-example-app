@@ -32,6 +32,7 @@ function ArticlesPreview({ articles, loading, updateArticles }) {
             state={article}
             className="preview-link"
           >
+            {article.realTimeHotValue != null && <span className="article-realTimeHotValue" style={{ marginRight: 12, color: "#888", fontSize: 14 }}>📊 {article.realTimeHotValue}</span>}
             <h1>{article.title}</h1>
             <p>{article.description}</p>
             <span>Read more...</span>
